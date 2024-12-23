@@ -12,7 +12,11 @@ const router = Router()
 // Get all users
 router.get('/', async (req, res) => {
   try {
-    const users = await User.find()
+    const users = await User.find().populate([
+      'address.country_id',
+      'address.city_id',
+      'address.street_id',
+    ])
     if (!users) return res.status(404).json({message: 'No users found'})
     return res.status(200).json({users: users})
   } catch (error) {
@@ -27,7 +31,11 @@ router.get('/:id', async (req, res) => {
   if (error) return res.status(400).json({message: error.details[0].message})
 
   try {
-    const user = await User.findById(req.params.id)
+    const user = await User.findById(req.params.id).populate([
+      'address.country_id',
+      'address.city_id',
+      'address.street_id',
+    ])
     if (!user) {
       return res.status(404).json({
         message: 'No users found',
@@ -91,7 +99,6 @@ router.delete('/delete/:id', async (req, res) => {
   }
 })
 
-//! I need to create 6 new users each user with a different street (total of 6 streets)
 // Create new user
 router.post('/create', async (req, res) => {
   req.body = sanitizeDataRequest(req.body)

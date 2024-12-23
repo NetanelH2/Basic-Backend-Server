@@ -44,6 +44,12 @@ const userSchema = new mongoose.Schema(
       maxlength: 30,
     },
     address: addressSchema,
+    age: {
+      type: Number,
+      required: true,
+      min: 18,
+      max: 120,
+    },
   },
   {timestamps: true},
 )

@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       unique: true,
       minlength: 2,
-      maxlength: 20,
+      maxlength: 30,
     },
     address: addressSchema,
   },

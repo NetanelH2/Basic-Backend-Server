@@ -91,6 +91,7 @@ router.delete('/delete/:id', async (req, res) => {
   }
 })
 
+//! I need to create 6 new users each user with a different street (total of 6 streets)
 // Create new user
 router.post('/create', async (req, res) => {
   req.body = sanitizeDataRequest(req.body)
@@ -103,7 +104,6 @@ router.post('/create', async (req, res) => {
         message: 'Email already in use',
       })
     }
-
     const user = await User.create(req.body)
     return res.status(201).json({message: 'User created', user: user})
   } catch (error) {

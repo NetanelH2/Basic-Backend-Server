@@ -7,15 +7,15 @@ const addressValidation = Joi.object({
 })
 
 export const createUserValidation = Joi.object({
-  firstName: Joi.string().min(3).max(20).required(),
-  lastName: Joi.string().min(3).max(20).required(),
+  firstName: Joi.string().min(2).max(20).required(),
+  lastName: Joi.string().min(2).max(20).required(),
   email: Joi.string().email().required(),
   address: addressValidation,
 })
 
 export const updateUserValidation = Joi.object({
-  firstName: Joi.string().min(3).max(20).optional(),
-  lastName: Joi.string().min(3).max(20).optional(),
+  firstName: Joi.string().min(2).max(20).optional(),
+  lastName: Joi.string().min(2).max(20).optional(),
   email: Joi.string().email().optional(),
   address: addressValidation,
 })

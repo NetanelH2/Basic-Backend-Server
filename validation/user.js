@@ -1,25 +1,35 @@
 import Joi from 'joi'
 
-const addressValidation = Joi.object({
-  country_id: Joi.string().length(24).required(),
-  city_id: Joi.string().length(24).required(),
-  street_id: Joi.string().length(24).required(),
-})
+const createValidationSchema = ({isRequired = true}) => {
+  const validationType = isRequired ? 'required' : 'optional'
 
-export const createUserValidation = Joi.object({
-  firstName: Joi.string().min(2).max(20).required(),
-  lastName: Joi.string().min(2).max(20).required(),
-  email: Joi.string().email().required(),
-  address: addressValidation,
-})
+  const schema = Joi.object({
+    firstName: Joi.string().min(2).max(20)[validationType](),
+    lastName: Joi.string().min(2).max(20)[validationType](),
+    email: Joi.string().email()[validationType](),
+    age: Joi.number().min(0).max(120)[validationType](),
 
-export const updateUserValidation = Joi.object({
-  firstName: Joi.string().min(2).max(20).optional(),
-  lastName: Joi.string().min(2).max(20).optional(),
-  email: Joi.string().email().optional(),
-  address: addressValidation,
-})
+    address: Joi.object({
+      country_id: Joi.string().length(24)[validationType](),
+      city_id: Joi.string().length(24)[validationType](),
+      street_id: Joi.string().length(24)[validationType](),
+    })[validationType](),
 
+    techStack: Joi.array()
+      .items(
+        Joi.object({
+          name: Joi.string().min(1).max(20)[validationType](),
+          experience: Joi.number().min(0).max(60)[validationType](),
+        }),
+      )
+      [validationType](),
+  })
+
+  return schema
+}
+
+export const createUserValidation = createValidationSchema({isRequired: true})
+export const updateUserValidation = createValidationSchema({isRequired: false})
 export const checkUserByIdValidation = Joi.object({
   id: Joi.string().length(24).required(),
 })

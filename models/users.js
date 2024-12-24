@@ -1,5 +1,23 @@
 import mongoose from 'mongoose'
 
+const techStackSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 20,
+    },
+    experience: {
+      type: Number,
+      required: true,
+      minlength: 1,
+      maxlength: 2,
+    },
+  },
+  {_id: false},
+)
+
 const addressSchema = new mongoose.Schema(
   {
     country_id: {
@@ -50,6 +68,7 @@ const userSchema = new mongoose.Schema(
       min: 18,
       max: 120,
     },
+    techStack: [techStackSchema],
   },
   {timestamps: true},
 )

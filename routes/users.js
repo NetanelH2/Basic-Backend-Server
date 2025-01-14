@@ -5,7 +5,7 @@ import {
   createUserValidation,
   updateUserValidation,
 } from '../validation/user.js'
-import {sanitizeDataRequest} from '../utils/sanitizeDataRequestUtil.js'
+import sanitizeDataRequest from '../utils/sanitize.js'
 
 const router = Router()
 

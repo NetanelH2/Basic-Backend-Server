@@ -1,7 +1,7 @@
 import {Router} from 'express'
 import Country from '../models/country.js'
 import {createCountryValidation} from '../validation/country.js'
-import {sanitizeDataRequest} from '../utils/sanitizeDataRequestUtil.js'
+import sanitizeDataRequest from '../utils/sanitize.js'
 
 const router = Router()
 

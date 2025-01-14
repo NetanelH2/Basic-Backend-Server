@@ -1,6 +1,7 @@
 import {Router} from 'express'
 import City from '../models/city.js'
 import {createCityValidation} from '../validation/city.js'
+import sanitizeDataRequest from '../utils/sanitize.js'
 
 const router = Router()
 

@@ -6,7 +6,7 @@ import {
   updatePostValidation,
 } from '../validation/post.js'
 import Post from '../models/posts.js'
-import {sanitizeDataRequest} from '../utils/sanitizeDataRequestUtil.js'
+import sanitizeDataRequest from '../utils/sanitize.js'
 
 const router = Router()
 

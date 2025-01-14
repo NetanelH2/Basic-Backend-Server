@@ -1,5 +1,5 @@
 import express from 'express'
-import {connectToDB} from './utils/dbConnection.js'
+import connectToDB from './utils/dbConnection.js'
 
 import userRouter from './routes/users.js'
 import postRouter from './routes/posts.js'

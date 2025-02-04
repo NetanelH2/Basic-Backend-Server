@@ -6,6 +6,7 @@ import postRouter from './routes/posts.js'
 import countryRouter from './routes/country.js'
 import cityRouter from './routes/city.js'
 import streetRouter from './routes/street.js'
+import auth from './routes/auth.js'
 
 await connectToDB()
 
@@ -19,6 +20,7 @@ app.use('/api/posts', postRouter)
 app.use('/api/country', countryRouter)
 app.use('/api/city', cityRouter)
 app.use('/api/street', streetRouter)
+app.use('/api/auth', auth)
 
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`),
